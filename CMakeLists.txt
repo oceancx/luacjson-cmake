@@ -8,11 +8,9 @@ endif()
 find_package(Lua CONFIG)
 
 add_library(cjson src/lua_cjson.c src/strbuf.c)
-add_library(LuaCJson::LuaCJson ALIAS cjson)
 target_compile_definitions(cjson PUBLIC -DVERSION="${PROJECT_VERSION}")
 
 target_link_libraries(cjson PUBLIC Lua::Lua)
-
 
 include(cmake/HelperMacroFunction.cmake)
 export_library_macro(cjson LuaCJson LuaCJson:: lib/cmake/luacjson)
